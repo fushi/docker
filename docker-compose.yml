@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  nginx:
+    image: jwilder/nginx-proxy
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    network_mode: bridge
+
+  selenium-hub:
+    build:
+      context: ./selenium_hub
+    container_name: selenium-hub
+    image: selenium-hub
+    ports:
+      - "4444"
+    network_mode: bridge
+    environment:
+      - VIRTUAL_HOST=selenium.company.com
+    depends_on:
+      - nginx
+
+  selenium-node:
+    build:
+      context: ./selenium_node
+    image: selenium-node
+    network_mode: bridge
+    depends_on:
+      - selenium-hub
+    links:
+      - selenium-hub
