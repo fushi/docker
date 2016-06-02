@@ -1,0 +1,5 @@
+{
+  "port": 4444,
+  "timeout": 60000,
+  "browserTimeout": 60000
+}

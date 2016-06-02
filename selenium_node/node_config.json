@@ -1,0 +1,23 @@
+{
+  "capabilities": [
+    {
+      "browserName": "firefox",
+      "platform": "LINUX",
+      "maxInstances": 1
+    },
+    {
+      "browserName": "chrome",
+      "platform": "LINUX",
+      "maxInstances": 1
+    }
+  ],
+  "configuration": {
+    "nodeTimeout":120000,
+    "port":5555,
+    "nodePolling":2000,
+    "registerCycle":10000,
+    "register":true,
+    "cleanUpCycle":2000,
+    "maxSession":1
+  }
+}
